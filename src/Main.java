@@ -96,10 +96,14 @@ public class Main {
                     termCoefficient = -termCoefficient;
                 }
 
-                if (termCoefficient != 1 || (powerA == 0 && powerB == 0)) {
+                // Append the coefficient
+                if (termCoefficient == -1 && (powerA > 0 || powerB > 0)) {
+                    result.append("-");
+                } else if (termCoefficient != 1 || (powerA == 0 && powerB == 0)) {
                     result.append(termCoefficient);
                 }
 
+                // Append 'a' part if applicable
                 if (powerA > 0 && numA == null) {
                     result.append(aSymbol);
                     if (powerA > 1) {
@@ -107,6 +111,7 @@ public class Main {
                     }
                 }
 
+                // Append 'b' part if applicable
                 if (powerB > 0 && numB == null) {
                     result.append(bSymbol);
                     if (powerB > 1) {
@@ -114,12 +119,12 @@ public class Main {
                     }
                 }
 
+                // Append " + " unless it's the last term
                 if (i < lastLine.size() - 1) {
                     result.append(" + ");
                 }
             }
-
-            String finalResult =  result.toString().replaceAll("\\+ -", "- ");
+            String finalResult = result.toString().replaceAll("\\+ -", "- ");
             System.out.println("Result: " + finalResult);
         }
     }
