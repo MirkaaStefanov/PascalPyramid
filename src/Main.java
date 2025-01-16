@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Generate Pascal's Triangle
         List<List<Integer>> pyramid = new ArrayList<>();
         List<Integer> firstLine = new ArrayList<>();
         firstLine.add(1);
@@ -33,7 +32,7 @@ public class Main {
             System.out.println();
         }
 
-        // Read inputs for a and b
+
         System.out.print("Enter a = ");
         String aInput = scanner.next();
         System.out.print("Enter b = ");
@@ -49,17 +48,17 @@ public class Main {
         Integer numB = null;
 
         try {
-            numA = Integer.parseInt(aSymbol); // Check if a is numeric
+            numA = Integer.parseInt(aSymbol);
         } catch (Exception ignored) {}
 
         try {
-            numB = Integer.parseInt(bSymbol); // Check if b is numeric
+            numB = Integer.parseInt(bSymbol);
         } catch (Exception ignored) {}
 
         List<Integer> lastLine = pyramid.get(koef);
 
         if (numA != null && numB != null) {
-            // Both `a` and `b` are numeric, compute the total result
+
             int totalResult = 0;
             for (int i = 0; i < lastLine.size(); i++) {
                 int coefficient = lastLine.get(i);
@@ -96,14 +95,12 @@ public class Main {
                     termCoefficient = -termCoefficient;
                 }
 
-                // Append the coefficient
                 if (termCoefficient == -1 && (powerA > 0 || powerB > 0)) {
                     result.append("-");
                 } else if (termCoefficient != 1 || (powerA == 0 && powerB == 0)) {
                     result.append(termCoefficient);
                 }
 
-                // Append 'a' part if applicable
                 if (powerA > 0 && numA == null) {
                     result.append(aSymbol);
                     if (powerA > 1) {
@@ -111,7 +108,6 @@ public class Main {
                     }
                 }
 
-                // Append 'b' part if applicable
                 if (powerB > 0 && numB == null) {
                     result.append(bSymbol);
                     if (powerB > 1) {
@@ -119,7 +115,6 @@ public class Main {
                     }
                 }
 
-                // Append " + " unless it's the last term
                 if (i < lastLine.size() - 1) {
                     result.append(" + ");
                 }
